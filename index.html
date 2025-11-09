@@ -394,13 +394,20 @@
                             </div>
                         ` : '';
 
+                        // This is the new, updated code
+                        const headingClasses = section.heading === "Note"
+                            ? "text-3xl font-semibold text-blue-400 text-center" // Centered for "Note"
+                            : "text-3xl font-semibold text-blue-400";            // Default (left) for others
+                        
                         return `
-                        <div class="space-y-4">
-                            <h3 class="text-3xl font-semibold text-blue-400">${section.heading}</h3>
-                            ${points ? `<ul class="space-y-3">${points}</ul>` : ''}
-                            ${note}
-                        </div>
+                            <div class="space-y-4">
+                                <h3 class="${headingClasses}">${section.heading}</h3>
+                                ${points ? `<ul class="space-y-3">${points}</ul>` : ''}
+                                ${note}
+                            </div>
                         `;
+
+                        
                     }).join('');
                     slideContent = `
                     <div class="space-y-8 animate-fade-in">
